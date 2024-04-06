@@ -12,4 +12,6 @@ class ChanceViewModel : ViewModel() {
         chanceDigit.intValue = list.random()
     }
 
+
+
 }

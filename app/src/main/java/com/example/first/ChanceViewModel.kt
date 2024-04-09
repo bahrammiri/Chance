@@ -9,7 +9,7 @@ class ChanceViewModel : ViewModel() {
 
     fun generateRandomDigit() {
         val list = listOf(1, 2, 3, 4, 5, 6)
-        chanceDigit.intValue = list.random()
+        chanceDigit.value = list.random()
     }
 
 }

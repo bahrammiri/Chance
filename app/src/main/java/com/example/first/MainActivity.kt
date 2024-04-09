@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FirstTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    chanceScreen(viewModel)
+                    baseScreen(viewModel)
                 }
             }
         }

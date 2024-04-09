@@ -8,31 +8,47 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@Composable
+fun baseScreen(chanceViewModel: ChanceViewModel) {
+    chanceScreen(
+        onClikedLisener = {
+            chanceViewModel.generateRandomDigit()
+        },
+        number = chanceViewModel.chanceDigit.intValue.toString()
+    )
+}
 
 @Composable
 fun chanceScreen(
-    chanceViewModel: ChanceViewModel,
-
-    ) {
+    onClikedLisener: () -> Unit,
+    number: String
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Button(onClick = {
-            chanceViewModel.generateRandomDigit()
+            onClikedLisener.invoke()
         }) {
             Text("Generate Random Digit")
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = chanceViewModel.chanceDigit.intValue.toString())
+        Text(text = number)
     }
-
-
 }
+
+
+@Preview
+@Composable
+fun TestPreview() {
+    chanceScreen({}, "6")
+}
+
 
